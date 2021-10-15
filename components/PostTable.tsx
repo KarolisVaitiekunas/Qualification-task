@@ -92,6 +92,7 @@ const PostTable = ({ posts: rows }: Props) => {
                   role="checkbox"
                   tabIndex={-1}
                   key={row.id}
+                  sx={{ cursor: "pointer" }}
                   onClick={() => (row.fake ? handleGetSpecificFakePost(row.id) : handleGetSpecificPost(row.id))}
                 >
                   {columns.map((column) => {
