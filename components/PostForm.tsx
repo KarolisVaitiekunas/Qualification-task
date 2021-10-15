@@ -45,6 +45,17 @@ function PostForm({ posts, setPosts }: Props): ReactElement {
       localStorage.setItem("fakePosts", JSON.stringify([fakePost]));
     }
   };
+
+  const clearFakePosts = () => {
+    let tempPosts: Array<IPostResponse> = [];
+    localStorage.clear();
+    posts.forEach((post) => {
+      if (post.id <= 100) {
+        tempPosts.push(post);
+      }
+    });
+    setPosts(tempPosts);
+  };
   return (
     <Box
       component="form"
@@ -61,6 +72,9 @@ function PostForm({ posts, setPosts }: Props): ReactElement {
       <TextField id="filled-basic" name="userId" label="UserId" variant="standard" type="number" required />
       <Button type="submit" variant="contained">
         Submit
+      </Button>
+      <Button variant="outlined" onClick={clearFakePosts}>
+        Clear fake posts
       </Button>
     </Box>
   );
